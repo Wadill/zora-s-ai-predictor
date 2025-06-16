@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import { WagmiProvider } from 'wagmi';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { config } from './config/wagmi';
+import { initializeZoraSDK } from './config/zora';
+import Header from './components/Header';
+import PostPredictor from './components/PostPredictor';
+import CoinList from './components/CoinList';
+import Footer from './components/Footer';
+import { motion } from 'framer-motion';
 
-function App() {
+// Create a QueryClient instance
+const queryClient = new QueryClient();
+
+const App: React.FC = () => {
+  useEffect(() => {
+    initializeZoraSDK();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>
+        <div className="min-h-screen bg-gray-900 text-white">
+          <Header />
+          <motion.main
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="container mx-auto px-4 py-8"
+          >
+            <PostPredictor />
+            <CoinList />
+          </motion.main>
+          <Footer />
+        </div>
+      </QueryClientProvider>
+    </WagmiProvider>
   );
-}
+};
 
 export default App;
