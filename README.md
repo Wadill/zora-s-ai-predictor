@@ -1,46 +1,71 @@
-# Getting Started with Create React App
+# Zora-ai Predictor
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Zora-ai Predictor** is a revolutionary Web3 application built for the **Zora WaveHack** to empower creators and traders on the Zora platform. It leverages the **Zora Coins SDK** and **AI-driven analytics** to forecast the potential value of social media posts based on historical coin performance.
 
-## Available Scripts
+With a sleek, animated interface and seamless wallet integration, Zora-ai Predictor helps creators optimize their posting strategy for maximum impact in the decentralized content economy.
 
-In the project directory, you can run:
+🚀 **Deployed on Base Mainnet**, it's a game-changer for Web3 content monetization.
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 🖼️ Demo
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<!-- Replace with actual demo GIF or screenshot -->
+> 📽️ [Watch Demo Video](#)  
+> Connect wallet → Predict post value → Explore trending coins.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## ✨ Features
 
-### `npm run build`
+- **Post Value Prediction**  
+  Uses `getCoin` and `getCoinComments` from Zora Coins SDK to analyze market cap, trading volume, and engagement—then predicts post value with AI-driven insights.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Optimal Posting Times**  
+  Recommends best times to post based on historical engagement trends.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Trending Coins Display**  
+  Showcases top-performing coins via `getCoinsTopGainers`.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Wallet Integration**  
+  Connect seamlessly with MetaMask via WAGMI and Viem on Base mainnet.
 
-### `npm run eject`
+- **Modern UI**  
+  Built with React, TypeScript, Tailwind CSS, and Framer Motion for responsive, animated UX.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+---
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 💡 Why It Matters
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Zora-ai Predictor addresses a key pain point: creators not knowing which posts will drive coin value or engagement. By combining **Zora’s blockchain tech** with **AI analytics**, this tool makes content creation data-driven and profitable.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+> Built to align with **Zora’s mission** of decentralized content monetization and deployed on **Base** for scalability.
 
-## Learn More
+---
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🧠 Tech Stack
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Frontend**: React, TypeScript, Tailwind CSS, Framer Motion  
+- **Blockchain**: Zora Coins SDK, WAGMI, Viem  
+- **Chain**: Base Mainnet (Chain ID: `8453`)  
+- **Data Fetching**: `@tanstack/react-query`  
+- **Build Tools**: CRA, npm, Webpack  
+
+---
+
+## ⚙️ Prerequisites
+
+- Node.js (v18+), npm (v8+)
+- A MetaMask wallet
+- Zora API key (get from [Zora Dev Settings](https://zora.co))
+- RPC URL for Base mainnet (e.g., from Infura or use `https://mainnet.base.org`)
+
+---
+
+## 📦 Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/your-username/zora-ai-predictor.git
+cd zora-ai-predictor
