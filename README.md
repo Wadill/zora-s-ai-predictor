@@ -31,7 +31,7 @@ With a sleek, animated interface and seamless wallet integration, Zora-ai Predic
 
 Zora-ai Predictor addresses a key pain point: creators not knowing which posts will drive coin value or engagement. By combining **Zora’s blockchain tech** with **AI analytics**, this tool makes content creation data-driven and profitable.
 
-> Built to align with **Zora’s mission** of decentralized content monetization and deployed on **Base** for scalability.
+> Built to align with **Zora’s mission** of decentralization and deployment on **Base** for scalability.
 
 ---
 
