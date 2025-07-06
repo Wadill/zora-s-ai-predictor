@@ -1,11 +1,11 @@
 import { createConfig, http } from 'wagmi';
-import { base } from 'wagmi/chains';
+import { base } from 'viem/chains';
 import { injected } from 'wagmi/connectors';
 
 export const config = createConfig({
   chains: [base],
   connectors: [injected()],
   transports: {
-    [base.id]: http('<YOUR_RPC_URL>'), // Replace with your RPC URL
+    [base.id]: http(process.env.REACT_APP_RPC_URL || 'https://mainnet.base.org'),
   },
 });

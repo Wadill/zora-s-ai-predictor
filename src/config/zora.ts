@@ -1,5 +1,10 @@
 import { setApiKey } from '@zoralabs/coins-sdk';
 
 export const initializeZoraSDK = () => {
-  setApiKey('your-api-key-here'); // Replace with your Zora API key
+  const apiKey = process.env.REACT_APP_ZORA_API_KEY;
+  if (!apiKey) {
+    console.error('Zora API key is missing');
+    return;
+  }
+  setApiKey(apiKey);
 };
