@@ -10,7 +10,7 @@ const PostPredictor: React.FC = () => {
   const [bestTime, setBestTime] = useState('');
   const [error, setError] = useState<string | null>(null);
 
-  const handlePredict = async () => {
+ 
     setError(null);
     try {
       // Fetch coin data
