@@ -1,67 +1,6 @@
-The judge’s positive response confirms that the updates to **Zora-ai Predictor** successfully resolved the "Predicted Post Value: $0" issue, ensuring reliable predictions. The new questions about what users should do with predictions and the possibility of enabling direct trading within the app provide an opportunity to further enhance the project for the Zora Wavehack 2025. Below, I’ll address these questions by outlining how users can leverage predictions, propose integrating trading functionality using the Zora Coins SDK, and provide updated code to implement this feature. I’ll also update the folder structure and relevant files to reflect the addition of trading capabilities, building on the existing codebase (React, TypeScript, Tailwind CSS, Framer Motion, WAGMI, Viem, Recharts, and Zora Coins SDK).
+# Zora-ai Predictor (Updated)
 
----
-
-### Addressing the Judge’s Questions
-
-#### 1. What Should Users Be Doing with the Predictions?
-The predictions in Zora-ai Predictor provide creators with actionable insights to optimize their social media posts for maximum engagement and value on the Zora platform. Specifically, users can:
-
-- **Optimize Posting Strategy**: Use the predicted post value and recommended posting time (from `PostPredictor`) to schedule content when engagement is likely to be highest, boosting coin visibility and market activity.
-- **Select High-Potential Coins**: Leverage the dashboard’s coin trend charts (`Chart.tsx`) to identify top-performing coins (via `getCoinsTopGainers`) for promotion or investment.
-- **Track Performance**: Compare predicted values with actual coin performance (e.g., `marketCapDelta24h`) to refine content strategies over time.
-- **Engage Communities**: Use sentiment analysis insights (from `compromise` in `PostPredictor`) to tailor posts that align with positive community sentiment, increasing engagement.
-- **Store Predictions On-Chain**: Save predictions to the `PredictionStorage` contract for transparency, allowing users to share verified predictions with their audience or use them in future campaigns.
-
-To make this clear to users, I’ll update the UI with a tooltip or modal in `PostPredictor.tsx` explaining how to use predictions.
-
-#### 2. Allowing Trading in the App
-Enabling direct trading within Zora-ai Predictor is a compelling feature, as it allows creators to act on predictions by buying or selling Zora coins without leaving the app. The Zora Coins SDK provides a `tradeCoin` function to facilitate this. I’ll integrate a trading interface in `PostPredictor.tsx`, allowing users to trade coins based on predicted values, and store trade details on-chain using an updated `PredictionStorage` contract. This aligns with Wave 2’s focus on actionable analytics and sets the stage for Wave 3’s SocialFi features (e.g., gamified trading).
-
----
-
-### Updated Folder Structure
-
-The folder structure is updated to include a new `TradeModal.tsx` component for the trading UI and an updated `PredictionStorage.sol` contract to store trade details. Below is the complete structure, with new and modified files highlighted.
-
-```plaintext
-zora-ai-predictor/
-├── contracts/
-│   └── PredictionStorage.sol         # Updated: Added trade storage
-├── src/
-│   ├── components/
-│   │   ├── AlertsPanel.tsx          # Unchanged
-│   │   ├── BuzzScore.tsx            # Unchanged
-│   │   ├── CoinCard.tsx             # Unchanged
-│   │   ├── Chart.tsx                # Unchanged
-│   │   ├── Dashboard.tsx            # Unchanged
-│   │   ├── Footer.tsx               # Unchanged
-│   │   ├── Header.tsx               # Unchanged
-│   │   ├── PortfolioManager.tsx     # Unchanged
-│   │   ├── PostPredictor.tsx        # Updated: Added trading UI and logic
-│   │   └── TradeModal.tsx           # New: Modal for trading coins
-│   ├── config/
-│   │   ├── wagmi.ts                 # Unchanged
-│   │   └── zora.ts                  # Unchanged
-│   ├── hooks/
-│   │   ├── useCoinData.ts           # Unchanged
-│   │   └── useContract.ts           # Updated: Added trade storage function
-│   ├── mocks/
-│   │   └── zora.ts                  # Updated: Added mock tradeCoin
-│   ├── types/
-│   │   └── zoralabs-coins-sdk.d.ts  # Unchanged
-│   ├── App.tsx                      # Unchanged
-│   ├── index.tsx                    # Unchanged
-│   ├── index.css                    # Unchanged
-│   └── types.ts                     # Unchanged
-├── .env                             # Unchanged
-├── package.json                     # Updated: Added react-icons
-├── tsconfig.json                    # Unchanged
-├── README.md                        # Updated: Added trading feature
-└── tailwind.config.js               # Unchanged
-```
-
----
+Zora-ai Predictor is a Web3 application built for Zora  empowering creators on the Zora platform to predict the value of their social media posts and trade coins directly. Leveraging the Zora Coins SDK, it analyzes coin performance and engagement data to deliver AI-driven insights, deployed on the Base mainnet. The app features a Recharts-based dashboard, on-chain storage, and a new trading interface.
 
 ### New and Updated Files
 
@@ -574,52 +513,14 @@ export const tradeCoin = async (params: { coinAddress: string; amount: string; i
 #### 6. `package.json` (Updated)
 Added `react-feather` for icons.
 
-```json
-{
-  "name": "zora-ai-predictor",
-  "version": "0.1.0",
-  "dependencies": {
-    "@tanstack/react-query": "^5.56.2",
-    "@zoralabs/coins-sdk": "^1.0.0",
-    "compromise": "^14.11.0",
-    "framer-motion": "^11.1.9",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-feather": "^2.0.10",
-    "recharts": "^2.12.7",
-    "viem": "^2.31.2",
-    "wagmi": "^2.15.2"
-  },
-  "devDependencies": {
-    "@types/node": "^20.0.0",
-    "@types/react": "^18.0.0",
-    "@types/react-dom": "^18.0.0",
-    "autoprefixer": "^10.0.0",
-    "postcss": "^8.0.0",
-    "tailwindcss": "^3.0.0",
-    "typescript": "^5.4.5"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  }
-}
-```
 
-**Changes**:
-- Added `react-feather` for the Info icon in `PostPredictor`.
 
----
 
-#### 7. `README.md` (Updated)
-Updated to include trading feature and judge’s feedback.
 
-```markdown
-# Zora-ai Predictor
 
-Zora-ai Predictor is a Web3 application built for the Zora Wavehack 2025, empowering creators on the Zora platform to predict the value of their social media posts and trade coins directly. Leveraging the Zora Coins SDK, it analyzes coin performance and engagement data to deliver AI-driven insights, deployed on the Base mainnet. The app features a Recharts-based dashboard, on-chain storage, and a new trading interface.
+
+
+
 
 ## Features
 
@@ -640,7 +541,7 @@ Zora-ai Predictor is a Web3 application built for the Zora Wavehack 2025, empowe
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/zora-ai-predictor.git
+   git clone https://github.com/wadill/zora-ai-predictor.git
    cd zora-ai-predictor
    ```
 
@@ -686,10 +587,7 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ## Contact
 
-- GitHub: [your-username](https://github.com/your-username)
-- X: [@your-username](https://x.com/your-username)
-- Email: your-email@example.com
-```
+- GitHub: [your-username](https://github.com/wadill)
 
 ---
 
@@ -697,7 +595,7 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 1. **Set Up Repository**:
    ```bash
-   git clone https://github.com/your-username/zora-ai-predictor.git
+   git clone https://github.com/wadill/zora-ai-predictor.git
    cd zora-ai-predictor
    ```
 
@@ -740,9 +638,7 @@ MIT License. See [LICENSE](LICENSE) for details.
    - Check console logs in DevTools (F12) for SDK responses and trade execution.
    - Share logs if issues persist.
 
----
 
-### Addressing Judge’s Feedback
 - **What Users Should Do with Predictions**:
   - Added a tooltip in `PostPredictor` explaining how to use predictions for posting, coin selection, trading, and tracking.
   - Predictions guide creators to optimize content timing and target high-value coins.
@@ -750,19 +646,9 @@ MIT License. See [LICENSE](LICENSE) for details.
   - Added `TradeModal` for buying/selling coins via `tradeCoin`.
   - Stores trades on-chain with `PredictionStorage` for transparency.
   - Mock data ensures reliable testing during development.
-- **Wave 2 Alignment**:
+
+- **Wave Alignment**:
   - Trading enhances the analytics dashboard by making predictions actionable.
-  - Prepares for Wave 3 SocialFi features like gamified trading and leaderboards.
+  - Prepares for next Wave SocialFi features like gamified trading and leaderboards.
 
 ---
-
-### Wavehack Submission Notes
-- **Demo Video**: Record a 1-2 minute video showing:
-  - Wallet connection via MetaMask.
-  - Non-zero predictions with varied inputs.
-  - Trading a coin using the `TradeModal`.
-  - Dashboard with coin trend charts.
-- **Submission**: Highlight the fix for the `$0` issue, trading integration, and Zora Coins SDK usage (`getCoin`, `getCoinComments`, `getCoinsTopGainers`, `tradeCoin`).
-- **Community**: Share updates on Zora’s Discord or X for feedback and visibility.
-
-If you need help deploying the contract, creating the demo video, or debugging specific issues (e.g., `tradeCoin` errors, contract interactions), share details, and I’ll provide targeted support to ensure Zora-ai Predictor shines in the Wavehack!
