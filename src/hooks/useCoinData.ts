@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getCoinsTopGainers } from '@zoralabs/coins-sdk';
+import axios from 'axios';
 import { Zora20Token } from '../types';
 
 export const useCoinData = () => {
@@ -10,10 +10,9 @@ export const useCoinData = () => {
   useEffect(() => {
     const fetchCoins = async () => {
       try {
-        const response = await getCoinsTopGainers({ count: 5 });
-        console.log('Top gainers response:', response);
-        const fetchedCoins = response.data?.exploreList?.edges?.map((edge: any) => edge.node) || [];
-        setCoins(fetchedCoins);
+        const response = await axios.get('http://localhost:5000/api/top-gainers');
+        console.log('Top gainers response:', response.data);
+        setCoins(response.data);
       } catch (err: any) {
         setError(err.message || 'Failed to fetch coins');
         console.log('Error fetching coins:', err);

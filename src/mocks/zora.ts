@@ -55,3 +55,12 @@ export const getCoinsTopGainers = async (params: { count?: number }) => ({
     },
   },
 });
+
+export const tradeCoin = async (params: { coinAddress: string; amount: string; isBuy: boolean; chain?: number }) => {
+  console.log('Mock tradeCoin called:', params);
+  return {
+    data: {
+      transactionHash: '0xMockTxHash',
+    },
+  };
+};
